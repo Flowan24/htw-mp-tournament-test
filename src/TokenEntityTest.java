@@ -7,17 +7,17 @@ import javax.validation.Validator;
 import org.junit.Assert;
 import org.junit.Test;
 
-import de.sb.tournament.persistence.Tournament;
+import de.sb.tournament.persistence.Token;
 
-public class TournamentEntityTest extends EntityTest {
+public class TokenEntityTest extends EntityTest {
 
 	@Test
 	public void testConstraints() {
 		Validator validator = this.getEntityValidatorFactory().getValidator();
 		
 		try {
-			Tournament entity = new Tournament(null, null);
-			Set<ConstraintViolation<Tournament>> constraintViolations = validator.validate(entity);
+			Token entity = new Token("test",1000);
+			Set<ConstraintViolation<Token>> constraintViolations = validator.validate(entity);
 			Assert.assertEquals(constraintViolations.size(), 0);
 		} catch (Exception e) {
 			
@@ -32,15 +32,15 @@ public class TournamentEntityTest extends EntityTest {
 
 		try {
 			entityManager.getTransaction().begin();
-			Tournament tournament = new Tournament(null, null);
-			entityManager.persist(tournament);
+			Token entity = new Token("test",1000);
+			entityManager.persist(entity);
 
 			entityManager.getTransaction().commit();
 
-			System.out.println("Persisted " + tournament);
-			getWasteBasket().add(tournament.getIdentity());
+			System.out.println("Persisted " + entity);
+			getWasteBasket().add(entity.getIdentity());
 
-			Assert.assertNotEquals(0, tournament.getIdentity());
+			Assert.assertNotEquals(0, entity.getIdentity());
 		} catch (Exception ex) {
 
 		} finally {

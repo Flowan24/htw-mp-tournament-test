@@ -1,42 +1,50 @@
+import java.util.Set;
+
+import javax.persistence.EntityManager;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
+
 import org.junit.Assert;
 import org.junit.Test;
+
+import de.sb.tournament.persistence.Match;
 
 public class MatchEntityTest extends EntityTest {
 
 	@Test
 	public void testConstraints() {
-		// TODO: test Constraints
+		Validator validator = this.getEntityValidatorFactory().getValidator();
 		
-		//EntityTest#getEntityValidatorFactory().getValidator()
 		try {
-
+			Match entity = new Match(null, null, (byte) 0, null, (byte) 0);
+			Set<ConstraintViolation<Match>> constraintViolations = validator.validate(entity);
+			Assert.assertEquals(constraintViolations.size(), 0);
 		} catch (Exception e) {
-
+			
 		} finally {
-
+			
 		}
-		
-		Assert.assertEquals(1,1);
 	}
 
 	@Test
 	public void testLifeCycle() {
-		/*
-		 * TODO: test Life Cycle
-		 * 
-		 * em = this.getEntityManagerFactory().createEntityManager()
-		 * 
-		 * em.getTransaction().begin()
-		 * 
-		 * .. em.persist(entity)
-		 * 
-		 * em.getTransaction().commit()
-		 * 
-		 * this.getWasteBasket().add(entity.getIdentity());
-		 * 
-		 * ... em.close();
-		 * 
-		 */
+		EntityManager entityManager = this.getEntityManagerFactory().createEntityManager();
 
+		try {
+			entityManager.getTransaction().begin();
+			Match entity = new Match(null, null, (byte) 0, null, (byte) 0);
+			entityManager.persist(entity);
+
+			entityManager.getTransaction().commit();
+
+			System.out.println("Persisted " + entity);
+			getWasteBasket().add(entity.getIdentity());
+
+			Assert.assertNotEquals(0, entity.getIdentity());
+		} catch (Exception ex) {
+
+		} finally {
+			entityManager.close();
+		}
 	}
 }

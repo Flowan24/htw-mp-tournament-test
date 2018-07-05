@@ -1,22 +1,10 @@
-import org.junit.Assert;
 import org.junit.Test;
 
 public class CompetitionEntityTest extends EntityTest {
 	
 	@Test
 	public void testConstraints() {
-		// TODO: test Constraints 
-		
-		// EntityTest#getEntityValidatorFactory().getValidator()
-		try {
-
-		} catch (Exception e) {
-
-		} finally {
-
-		}
-		
-		Assert.assertEquals(1,1);
+		//TODO: test constraints
 	}
 	
 	@Test
