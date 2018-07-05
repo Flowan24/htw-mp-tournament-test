@@ -1,23 +1,25 @@
+import java.util.Set;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
+
 import org.junit.Assert;
 import org.junit.Test;
 
+import de.sb.tournament.persistence.BaseEntity;
+import de.sb.tournament.persistence.Tournament;
+
 public class TournamentEntityTest extends EntityTest {
 
+	Validator validator;
+	BaseEntity entity;
+	Set<ConstraintViolation<BaseEntity>> constraintViolations;
+	
 	@Test
 	public void testConstraints() {
-		/*
-		 * TODO: test Constraints validator =
-		 * this.getEntityValidatorFactory().getValidator()
-		 * 
-		 * entity = new Tournament();
-		 * 
-		 * ...
-		 * 
-		 * constrainViolations = validator.vaidate(entity);
-		 * 
-		 * 
-		 * ...
-		 */
+		validator = this.getEntityValidatorFactory().getValidator();
+		entity = new Tournament(null, null);
+		constraintViolations = validator.validate(entity);
 		try {
 
 		} catch (Exception e) {

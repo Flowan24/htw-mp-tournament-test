@@ -11,5 +11,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/json-yasson-1.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jval-hibernate-6.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/tournament-test"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/tournament-model"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

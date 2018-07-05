@@ -5,14 +5,16 @@ public class EntityTest {
 
 	private long[] wasteBasket;
 	
-	public EntityManagerFactory getEntityManagerFactory();
+	public EntityManagerFactory getEntityManagerFactory()
 	{
 		//TODO: EntityManagerFactory
+		return null;
 	}
 	
-	public ValidatorFactory getEntityValidatorFactory();
+	public ValidatorFactory getEntityValidatorFactory()
 	{
 		//TODO: EntityValidatorFactory
+		return null;
 	}
 	
 	public long[] getWasteBasket() {
