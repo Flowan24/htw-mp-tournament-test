@@ -1,6 +1,7 @@
 package de.sb.tournament.rest;
 
 import static java.util.logging.Level.INFO;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,8 +10,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.logging.Logger;
+
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
+
 import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 import org.glassfish.jersey.jdkhttp.JdkHttpServerFactory;
@@ -19,7 +22,9 @@ import org.glassfish.jersey.server.ResourceConfig;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+
 import com.sun.net.httpserver.HttpServer;
+
 import de.sb.toolbox.Copyright;
 import de.sb.toolbox.net.RestJpaLifecycleProvider;
 import de.sb.toolbox.net.RestResponseCodeProvider;
