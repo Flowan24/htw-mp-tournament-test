@@ -1,3 +1,4 @@
+package de.sb.tournament.persistence;
 import javax.persistence.EntityManager;
 import javax.validation.Validator;
 

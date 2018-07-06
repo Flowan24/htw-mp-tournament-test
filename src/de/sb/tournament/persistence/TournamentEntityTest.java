@@ -1,3 +1,4 @@
+package de.sb.tournament.persistence;
 import java.util.Set;
 
 import javax.persistence.EntityManager;

@@ -1,3 +1,4 @@
+package de.sb.tournament.persistence;
 import org.junit.Test;
 
 public class CompetitionEntityTest extends EntityTest {
