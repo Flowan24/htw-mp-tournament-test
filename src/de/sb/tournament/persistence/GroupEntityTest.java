@@ -1,4 +1,5 @@
 package de.sb.tournament.persistence;
+
 import javax.persistence.EntityManager;
 import javax.validation.Validator;
 
@@ -14,18 +15,17 @@ public class GroupEntityTest extends EntityTest {
 		Validator validator = this.getEntityValidatorFactory().getValidator();
 
 		try {
+			
 			Group entity = new Group(null);
-			//test incorrect
+			// test incorrect
 			entity.setAlias("abcd");
 			Assert.assertEquals(validator.validate(entity).size(), 1);
-			//test correct
+			// test correct
 			entity.setAlias("abc");
 			Assert.assertEquals(validator.validate(entity).size(), 0);
 			
 		} catch (Exception ex) {
 			System.err.println(ex.getMessage());
-		} finally {
-			//TODO: Cannot close validator --> validator.close() does not exist 
 		}
 	}
 
@@ -34,6 +34,7 @@ public class GroupEntityTest extends EntityTest {
 		EntityManager entityManager = this.getEntityManagerFactory().createEntityManager();
 
 		try {
+
 			entityManager.getTransaction().begin();
 			Group entity = new Group(null);
 			entityManager.persist(entity);
@@ -44,6 +45,7 @@ public class GroupEntityTest extends EntityTest {
 			getWasteBasket().add(entity.getIdentity());
 
 			Assert.assertNotEquals(0, entity.getIdentity());
+
 		} catch (Exception ex) {
 			System.err.println(ex.getMessage());
 		} finally {

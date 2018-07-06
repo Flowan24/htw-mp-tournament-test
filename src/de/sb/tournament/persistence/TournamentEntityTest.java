@@ -1,30 +1,14 @@
 package de.sb.tournament.persistence;
-import java.util.Set;
-
 import javax.persistence.EntityManager;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
 
 import org.junit.Assert;
 import org.junit.Test;
-
-import de.sb.tournament.persistence.Tournament;
 
 public class TournamentEntityTest extends EntityTest {
 
 	@Test
 	public void testConstraints() {
-		Validator validator = this.getEntityValidatorFactory().getValidator();
-		
-		try {
-			Tournament entity = new Tournament(null, null);
-			Set<ConstraintViolation<Tournament>> constraintViolations = validator.validate(entity);
-			Assert.assertEquals(constraintViolations.size(), 0);
-		} catch (Exception e) {
-			
-		} finally {
-			//TODO: Cannot close validator --> validator.close() does not exist 
-		}
+		//WE AGREED THAT WE DONOT IMPLEMENT FURTHER TEST CASES
 	}
 
 	@Test

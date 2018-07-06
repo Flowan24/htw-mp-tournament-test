@@ -5,13 +5,11 @@ public class CompetitionEntityTest extends EntityTest {
 	
 	@Test
 	public void testConstraints() {
-		//TODO: test constraints
+		//WE AGREED THAT WE DONOT IMPLEMENT FURTHER TEST CASES
 	}
 	
 	@Test
 	public void testLifeCycle() {
-		//TODO: test Life Cycle
-		
-		//EntityTest#getEntityManagerFactory().createEntityManager()
+		//WE AGREED THAT WE DONOT IMPLEMENT FURTHER TEST CASES
 	}
 }
