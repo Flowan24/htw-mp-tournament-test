@@ -1,7 +1,4 @@
-import java.util.Set;
-
 import javax.persistence.EntityManager;
-import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
 import org.junit.Assert;
@@ -16,13 +13,19 @@ public class TokenEntityTest extends EntityTest {
 		Validator validator = this.getEntityValidatorFactory().getValidator();
 		
 		try {
-			Token entity = new Token("test",1000);
-			Set<ConstraintViolation<Token>> constraintViolations = validator.validate(entity);
-			Assert.assertEquals(constraintViolations.size(), 0);
-		} catch (Exception e) {
+			Token entity;
 			
+			//test incorrect
+			entity = new Token("test",-1000);
+			Assert.assertEquals(validator.validate(entity).size(), 1);
+			//test correct
+			entity = new Token("test",1000);
+			Assert.assertEquals(validator.validate(entity).size(), 0);
+
+		} catch (Exception ex) {
+			System.err.println(ex.getMessage());
 		} finally {
-			
+			//TODO: Cannot close validator --> validator.close() does not exist 
 		}
 	}
 

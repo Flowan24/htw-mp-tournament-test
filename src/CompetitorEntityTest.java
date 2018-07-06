@@ -1,7 +1,4 @@
-import java.util.Set;
-
 import javax.persistence.EntityManager;
-import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
 import org.junit.Assert;
@@ -17,12 +14,32 @@ public class CompetitorEntityTest extends EntityTest {
 		
 		try {
 			Competitor entity = new Competitor(null);
-			Set<ConstraintViolation<Competitor>> constraintViolations = validator.validate(entity);
-			Assert.assertEquals(constraintViolations.size(), 0);
-		} catch (Exception e) {
 			
+			//test incorrect
+			entity.setAlias("abcd");
+			Assert.assertEquals(validator.validate(entity).size(), 1);
+			//test correct
+			entity.setAlias("abc");
+			Assert.assertEquals(validator.validate(entity).size(), 0);
+			
+			//test incorrect
+			entity.setName("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod "); //80 characters
+			Assert.assertEquals(validator.validate(entity).size(), 1);
+			//test correct
+			entity.setAlias("Lorem ipsum dolor si"); //20 Characters
+			Assert.assertEquals(validator.validate(entity).size(), 0);
+			
+			//test incorrect
+			entity.setName("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod "); //80 characters
+			Assert.assertEquals(validator.validate(entity).size(), 1);
+			//test correct
+			entity.setAlias("Lorem ipsum dolor si"); //20 Characters
+			Assert.assertEquals(validator.validate(entity).size(), 0);
+			
+		} catch (Exception ex) {
+			System.err.println(ex.getMessage());
 		} finally {
-			
+			//TODO: Cannot close validator --> validator.close() does not exist 
 		}
 	}
 
@@ -42,7 +59,7 @@ public class CompetitorEntityTest extends EntityTest {
 
 			Assert.assertNotEquals(0, entity.getIdentity());
 		} catch (Exception ex) {
-
+			System.err.println(ex.getMessage());
 		} finally {
 			entityManager.close();
 		}

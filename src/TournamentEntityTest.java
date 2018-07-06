@@ -22,7 +22,7 @@ public class TournamentEntityTest extends EntityTest {
 		} catch (Exception e) {
 			
 		} finally {
-			
+			//TODO: Cannot close validator --> validator.close() does not exist 
 		}
 	}
 

@@ -1,7 +1,4 @@
-import java.util.Set;
-
 import javax.persistence.EntityManager;
-import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 
 import org.junit.Assert;
@@ -17,12 +14,11 @@ public class TournamentTypeEntityTest extends EntityTest {
 		
 		try {
 			TournamentType entity = new TournamentType(null, null);
-			Set<ConstraintViolation<TournamentType>> constraintViolations = validator.validate(entity);
-			Assert.assertEquals(constraintViolations.size(), 0);
-		} catch (Exception e) {
-			
+			Assert.assertEquals(validator.validate(entity).size(), 0);
+		} catch (Exception ex) {
+			System.err.println(ex.getMessage());
 		} finally {
-			
+			//TODO: Cannot close validator --> validator.close() does not exist 
 		}
 	}
 
@@ -42,7 +38,7 @@ public class TournamentTypeEntityTest extends EntityTest {
 
 			Assert.assertNotEquals(0, entity.getIdentity());
 		} catch (Exception ex) {
-
+			System.err.println(ex.getMessage());
 		} finally {
 			entityManager.close();
 		}
