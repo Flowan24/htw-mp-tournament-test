@@ -17,7 +17,7 @@ public class TournamentTypeEntityTest extends EntityTest {
 
 		try {
 			entityManager.getTransaction().begin();
-			TournamentType entity = new TournamentType(null, null);
+			TournamentType entity = new TournamentType(null);
 			entityManager.persist(entity);
 
 			entityManager.getTransaction().commit();
